@@ -16,11 +16,11 @@ post '/logout' do
   redirect to '/'
 end
 
-get '/user_page' do
-  if session[:user_id]
-    @user = User.find(session[:user_id])
-    erb :user_page
-  else
-    redirect to '/sign_in'
-  end
-end
+# get '/user_page' do
+#   if session[:user_id]
+#     @user = User.find(session[:user_id])
+#     erb :user_page
+#   else
+#     redirect to '/sign_in'
+#   end
+# end

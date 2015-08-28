@@ -3,7 +3,7 @@ get '/' do
   erb :index
 end
 
-post '/sign_in' do
+get '/sign_in' do
   erb :sign_in
 end
 
@@ -40,6 +40,11 @@ post '/register' do
 end
 
 get '/user_page' do
+  @user = User.find_by(id: session[:user_id])
+    erb :user_page
+end
+
+post '/user_page' do
   if session[:user_id]
     @user = User.find(session[:user_id])
     erb :user_page

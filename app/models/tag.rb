@@ -1,6 +1,6 @@
 class Tag < ActiveRecord::Base
 
-  has_many :propertytags
-  has_many : :propertys, through: :propertytags
+  has_many :property_tags
+  has_many :properties, through: :property_tags
 
 end

@@ -1,6 +1,7 @@
 class Property < ActiveRecord::Base
 
-  has_many :propertytags
-  has_many :tags, through: :propertytags
+  has_many :property_tags
+  has_many :tags, through: :property_tags
+  belongs_to :user
 
 end

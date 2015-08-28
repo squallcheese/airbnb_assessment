@@ -2,7 +2,7 @@ class CreatePropertyTags < ActiveRecord::Migration
   def change
     create_table :property_tags do |t|
       t.string :tag_text
-      t.integer :property_id
+      t.integer :proprety_id
       t.integer :user_id
       t.integer :tag_id
 
@@ -10,3 +10,4 @@ class CreatePropertyTags < ActiveRecord::Migration
     end
   end
 end
+

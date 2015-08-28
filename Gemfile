@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 # PostgreSQL driver
 gem 'pg'
-
+gem 'byebug'
 # Sinatra driver
 gem 'sinatra'
 gem 'sinatra-contrib'
