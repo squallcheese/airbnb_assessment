@@ -1,0 +1,16 @@
+<div class="container" align="center">
+  <h1>Your AirBNB Homepage!</h1>
+  <p>Hello <%= @user.username %>!<br>
+
+<ul>
+<% @list = Property.where(user_id: @user.id) %>
+<% @list.each do |row| %>
+<li> URL = <%= row.long_ur %> Shortened URL = <%= row.shortened_url %>
+</li>
+<% end %>
+</ul>
+
+<form action='/logout' method='post'>
+<button> Logout </button>
+</form>
+</div>
