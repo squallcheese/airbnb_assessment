@@ -1,47 +1,6 @@
 get '/' do
-  # Look in app/views/index.erb
+  @properties = Property.all
   erb :index
-end
-
-get '/sign_in' do
-  erb :sign_in
-end
-
-post '/sign_in' do
-  @email = params[:email]
-  @password = params[:password]
-
-  if User.authenticate(@email, @password)
-    user = User.find_by email: @email
-    session[:user_id] = user.id
-    redirect to '/user_page'
-  else
-    redirect to '/'
-  end
-end
-
-get '/register' do
-  erb :register
-end
-
-post '/register' do
-  p session[:email]
-
-  @username = params[:username]
-  @email = params[:email]
-  @password = params[:password]
-
-  if User.check_duplicate(@email) == false
-    redirect to '/'
-  else
-    @user = User.create(username: @username, email: @email, password: @password)
-    erb :user_page
-  end
-end
-
-get '/user_page' do
-  @user = User.find_by(id: session[:user_id])
-    erb :user_page
 end
 
 post '/user_page' do
@@ -53,7 +12,8 @@ post '/user_page' do
   end
 end
 
-post '/logout' do
-  session[:user_id] = nil
-  redirect to '/'
+get '/user_page' do
+  @current_user = User.find(session[:user_id])
+  @properties = Property.user_property_list(session[:user_id])
+  erb :user_page
 end

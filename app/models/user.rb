@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+
   has_many :properties
 
   def self.check_duplicate(email)

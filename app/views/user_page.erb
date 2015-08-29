@@ -1,18 +1,39 @@
 <div class="container" align="center">
   <h1>Your AirBNB Homepage!</h1>
+  <p>Welcome, <%= @user.username %></p>
+</div>
 
-  <div class="menu">
-    <button id="return"><a href="/">Return</a></button>
-  </div>
+<p>What would you like to do?</p>
 
-<ul>
-<% @list = Property.where(user_id: @user.id) %>
-<% @list.each do |row| %>
-  <p><%= row.room_type %></p>
-<% end %>
-</ul>
+<form action='/user_page/new' method='post'>
+<button> New Property </button>
+</form>
+</div>
+
+<form action='/user_page/edit' method='post'>
+<button> Edit Your Property </button>
+</form>
+</div>
+
+<form action='/user_page/delete' method='post'>
+<button> View Your Property </button>
+</form>
+</div>
+
+<form action='/user_page/delete' method='post'>
+<button> Delete Your Property </button>
+</form>
+</div>
 
 <form action='/logout' method='post'>
 <button> Logout </button>
 </form>
+</div>
+
+<div>
+<h2>Your List of Properties</h2>
+<% @list = Property.where(user_id: @user.id) %>
+<% @list.each do |row| %>
+  <p><%= row.room_type %></p>
+<% end %>
 </div>
