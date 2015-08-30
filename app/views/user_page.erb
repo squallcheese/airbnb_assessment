@@ -1,6 +1,5 @@
 <div class="container" align="center">
   <h1>Your AirBNB Homepage!</h1>
-  <p>Welcome, <%= @user.username %></p>
 </div>
 
 <p>What would you like to do?</p>
@@ -28,12 +27,4 @@
 <form action='/logout' method='post'>
 <button> Logout </button>
 </form>
-</div>
-
-<div>
-<h2>Your List of Properties</h2>
-<% @list = Property.where(user_id: @user.id) %>
-<% @list.each do |row| %>
-  <p><%= row.room_type %></p>
-<% end %>
 </div>

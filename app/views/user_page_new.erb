@@ -1,0 +1,66 @@
+  <div class="container">
+    <h1>Your AirBNB Homepage!</h1>
+    <p>Create New Property<br>
+
+  <form action="/user_page/new" method='post'>
+    <table>
+     <tr>
+        <td>Property Name:</td>
+        <td>
+        <input name="property_name" type="text">
+        </td>
+    </tr>
+    <tr>
+        <td>Property Type:</td>
+        <td>
+        <input name="property_type" type="text">
+        </td>
+    </tr>
+    <tr>
+        <td>Room Type:</td>
+        <td>
+        <input name="room_type" type="text">
+        </td>
+    </tr>
+    <tr>
+        <td>Location:</td>
+        <td>
+        <input name="location" type="text">
+        </td>
+    </tr>
+    <tr>
+        <td>Number of Guest(s):</td>
+        <td>
+        <input name="pax" type="text">
+        </td>
+    </tr>
+    <tr>
+        <td>Price:</td>
+        <td>
+        <input name="price" type="text">
+        </td>
+    </tr>
+    <tr>
+        <td>Rating (1 to 5, where 5 is highest):</td>
+        <td>
+        <input name="rating" type="text">
+        </td>
+    </tr>
+    <tr>
+        <td>Additional Info:</td>
+        <td>
+        <textarea name="property_text" rows="5"></textarea>
+        </td>
+    </tr>
+    <tr>
+    <td colspan="1">
+    <input type="submit" value="Create" class="button">
+    </td>
+    </tr>
+</table>
+  </form>
+</div>
+
+    <% Tag.all.each_with_index do |tag, i| %>
+    <input name=<%="tags[" + tag.tag_text + "]"%> type="checkbox" > <%=tag.tag_text%>
+    <% end %>

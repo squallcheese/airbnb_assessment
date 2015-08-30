@@ -1,0 +1,66 @@
+  <div class="container">
+    <h1>Your AirBNB Homepage!</h1>
+    <p>Edit Your Property(s)<br>
+
+  <form action="/user_page/edit/<%= @property.id %>" method='post'>
+    <table>
+     <tr>
+        <td>Property Name:</td>
+        <td>
+        <input name="property_name" type="text" value="<%= @property.property_name %>">
+        </td>
+    </tr>
+    <tr>
+        <td>Property Type:</td>
+        <td>
+        <input name="property_type" type="text" value="<%= @property.property_type %>">
+        </td>
+    </tr>
+    <tr>
+        <td>Room Type:</td>
+        <td>
+        <input name="room_type" type="text" value="<%= @property.room_type %>">
+        </td>
+    </tr>
+    <tr>
+        <td>Location:</td>
+        <td>
+        <input name="location" type="text" value="<%= @property.location %>">
+        </td>
+    </tr>
+    <tr>
+        <td>Number of Guest(s):</td>
+        <td>
+        <input name="pax" type="text" value="<%= @property.pax %>">
+        </td>
+    </tr>
+    <tr>
+        <td>Price:</td>
+        <td>
+        <input name="price" type="text" value="<%= @property.price %>">
+        </td>
+    </tr>
+    <tr>
+        <td>Rating (1 to 5, where 5 is highest):</td>
+        <td>
+        <input name="rating" type="text" value="<%= @property.rating %>">
+        </td>
+    </tr>
+    <tr>
+        <td>Additional Info:</td>
+        <td>
+        <textarea name="property_text" rows="5"><%= @property.property_text %>"</textarea>
+        </td>
+    </tr>
+    <tr>
+    <td colspan="1">
+    <input type="submit" value="Edit" class="button">
+    </td>
+    </tr>
+</table>
+  </form>
+</div>
+
+    <% Tag.all.each_with_index do |tag, i| %>
+    <input name=<%="tags[" + tag.tag_text + "]"%> type="checkbox" > <%=tag.tag_text%>
+    <% end %>
