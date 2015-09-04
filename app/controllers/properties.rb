@@ -56,7 +56,7 @@ post '/user_page/edit/:id' do
   @property.property_text = params[:property_text]
   #@tags = params[:tag_text]
 
-  @property.update(property_name: @property_name,property_type: @property_type, room_type: @room_type, location: @location, pax: @pax, price: @price, rating: @rating, property_text: @property_text)
+  @property.save
 #   #old_tag = PropertyTag.where(property_id: params[:id])
 #   #old_tag.each {|tag| tag.delete}
 
