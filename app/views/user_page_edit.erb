@@ -1,4 +1,4 @@
-  <div class="container">
+<div class="container">
     <h1>Your AirBNB Homepage!</h1>
     <p>Edit Your Property(s)<br>
 
@@ -49,7 +49,7 @@
     <tr>
         <td>Additional Info:</td>
         <td>
-        <textarea name="property_text" rows="5"><%= @property.property_text %>"</textarea>
+        <textarea name="property_text" rows="5"><%= @property.property_text %></textarea>
         </td>
     </tr>
     <tr>
@@ -57,15 +57,14 @@
     <input type="submit" value="Edit" class="button">
     </td>
     </tr>
-</table>
-  </form>
+    </table>
+    </form>
 </div>
 
-<form action="/user_page/delete" method="POST">
-      <input type="submit" name="property.id" value="Delete">
-    </form>
-  </td>
-</tr>
+    <div class="Delete">
+    <form action="/user_page/delete/<%= @property.id %>" method="post">
+    <input type="submit" value="Delete">
+    </form></div>
 
     <% Tag.all.each_with_index do |tag, i| %>
     <input name=<%="tags[" + tag.tag_text + "]"%> type="checkbox" > <%=tag.tag_text%>

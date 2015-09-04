@@ -3,23 +3,21 @@
   <h2>Welcome <%= @user.username %></h2>
 </div>
 
-<p>What would you like to do?</p>
-
+<div class="NewLogOut">
+What would you like to do?
+<p>
 <a href='/user_page/new'><button>New Property</button></a>
 <p>
-To Edit/Delete Property
-<form action="/user_page/edit" method="get">
-<input name="id" type="text" value="Insert Property ID here"><input type="submit" value="Submit" class="button">
-</form>
-<p>
-<form action="/logout" method= "get" class="logout">
+<form name="Logout" action="/logout" method= "get" class="logout">
 <input type="submit" value="Logout">
-</form>
+</form></div>
 
-<h3>Your Properties</h3>
-    <table class="table table-responsive">
+<div class="your_property">
+  <h3>Your Properties</h3>
+    <table class="property_table">
       <tr>
         <th>Property Name</th>
+        <th>Edit/Delete</th>
         <th>Property Type</th>
         <th>Room Type</th>
         <th>Location</th>
@@ -31,6 +29,7 @@ To Edit/Delete Property
       <% @properties.each do |property| %>
         <tr>
           <td><%= property.property_name %></td>
+          <td><a href='/user_page/edit/<%= property.id %>'><button>Edit/Delete</button></a></td>
           <td><%= property.property_type %></td>
           <td><%= property.room_type %></td>
           <td><%= property.location %></td>
@@ -42,3 +41,4 @@ To Edit/Delete Property
          </tr>
          <% end %>
     </table>
+  </div>

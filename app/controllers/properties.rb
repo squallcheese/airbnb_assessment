@@ -35,15 +35,15 @@ post '/user_page/new' do
 end
 
 #Editing and Deleting property post
-get '/user_page/edit/' do
+get '/user_page/edit/:id' do
   current_user
   #redirect to '/user_page' if params[:id].nil?
 
-  @property = Property.find_by_id(params[:id])
+  @property = Property.find(params[:id])
   erb :user_page_edit
 end
 
-post '/user_page/edit' do
+post '/user_page/edit/:id' do
   current_user
   @property = Property.find(params[:id])
   @property.property_name = params[:property_name]
@@ -56,6 +56,7 @@ post '/user_page/edit' do
   @property.property_text = params[:property_text]
   #@tags = params[:tag_text]
 
+  @property.update(property_name: @property_name,property_type: @property_type, room_type: @room_type, location: @location, pax: @pax, price: @price, rating: @rating, property_text: @property_text)
 #   #old_tag = PropertyTag.where(property_id: params[:id])
 #   #old_tag.each {|tag| tag.delete}
 
@@ -63,12 +64,11 @@ post '/user_page/edit' do
 #   #  @tag.Tag.find_by tag_text: tag
 #   #  @tag.properties << current_property
 
-  @property.save
-  #redirect to '/user_page'
+  redirect to '/user_page'
 end
 
-post '/user_page/delete' do
-  @property = Property.find_by_id(params[:id])
-  @roperty.destroy
+post '/user_page/delete/:id' do
+  @property = Property.find(params[:id])
+  @property.destroy
   redirect to '/user_page'
 end

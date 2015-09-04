@@ -7,3 +7,23 @@
 th {
   text-align: left;
 }
+
+.property_table{
+column-width: 20px;
+}
+
+.NewLogOut{
+  margin-left: 20px;
+}
+
+.AllAirBnB{
+  margin-left: 20px;
+}
+
+.Delete{
+  margin-left: 230px;
+}
+
+.your_property{
+  margin-left: 20px;
+}
