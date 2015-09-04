@@ -24,3 +24,29 @@
   </table>
 </div>
 
+<h2>All Properties on AirBnB Lite</h2>
+    <table class="table table-responsive">
+      <tr>
+        <th>Property Name</th>
+        <th>Property Type</th>
+        <th>Room Type</th>
+        <th>Location</th>
+        <th>No. of Guest(s)</th>
+        <th>Price</th>
+        <th>Rating</th>
+        <th>Additional Info</th>
+      </tr>
+      <% @property.each do |property| %>
+        <tr>
+          <td><%= property.property_name %></td>
+          <td><%= property.property_type %></td>
+          <td><%= property.room_type %></td>
+          <td><%= property.location %></td>
+          <td><%= property.pax %></td>
+          <td><%= property.price %></td>
+          <td><%= property.rating %></td>
+          <td><%= property.property_text %></td>
+          </td>
+         </tr>
+         <% end %>
+    </table>

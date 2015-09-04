@@ -1,21 +1,9 @@
-#Listing all available properties
+#Lists all user's properties
 get '/user_page' do
-  @properties = Property.all
-  erb :user_page
-end
-
-#User's property page, for Viewing and Deleting
-#Do not know why Sinatra only directs to /Delete, unless it's a built in feature of CRUD
-get 'user_page/view' do
-  @properties = Property.find_by_id(params[:id])
   current_user
-  erb :user_page_view
-end
-
-post '/user_page/delete' do
-  @property = Property.find_by_id(params[:id])
-  Property.destroy(@property)
-  erb :user_page_delete
+  @user = User.find_by id: session[:user_id]
+  @properties = @user.properties
+  erb :user_page
 end
 
 #Creating new property post
@@ -35,29 +23,29 @@ post '/user_page/new' do
   @property_text = params[:property_text]
   #@tags = params[:tag_text]
 
-@property_new = Property.new(property_name: @property_name,property_type: @property_type, room_type: @room_type, location: @location, pax: @pax, price: @price, rating: @rating, property_text: @property_text)
+  @property_new = Property.new(property_name: @property_name,property_type: @property_type, room_type: @room_type, location: @location, pax: @pax, price: @price, rating: @rating, property_text: @property_text)
 
-# tags.each_key do |tag|
-#   @tag = Tag.find_by tag_text: tag
-#   @tag.properties << @property
-# end
-@property_new.save
-@current_user.properties << @property_new
-erb :user_page_new
-
-#redirect to '/user_page'
+  # tags.each_key do |tag|
+  #   @tag = Tag.find_by tag_text: tag
+  #   @tag.properties << @property
+  # end
+  @current_user.properties << @property_new
+  @property_new.save
+  redirect to '/user_page'
 end
 
 #Editing and Deleting property post
-get '/user_page/edit' do
+get '/user_page/edit/' do
   current_user
+  #redirect to '/user_page' if params[:id].nil?
+
   @property = Property.find_by_id(params[:id])
   erb :user_page_edit
 end
 
 post '/user_page/edit' do
   current_user
-  @property = Property.find_by_id(params[:id])
+  @property = Property.find(params[:id])
   @property.property_name = params[:property_name]
   @property.property_type = params[:property_type]
   @property.room_type = params[:room_type]
@@ -75,12 +63,12 @@ post '/user_page/edit' do
 #   #  @tag.Tag.find_by tag_text: tag
 #   #  @tag.properties << current_property
 
-
   @property.save
-  erb :user_page_edit
+  #redirect to '/user_page'
 end
 
-#   redirect to '/user_page/#{@property.id}'
-#   end
-
-
+post '/user_page/delete' do
+  @property = Property.find_by_id(params[:id])
+  @roperty.destroy
+  redirect to '/user_page'
+end

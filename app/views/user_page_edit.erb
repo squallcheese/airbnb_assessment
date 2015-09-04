@@ -2,7 +2,7 @@
     <h1>Your AirBNB Homepage!</h1>
     <p>Edit Your Property(s)<br>
 
-  <form action="/user_page/edit/<%= @property.id %>" method='post'>
+  <form name="/user_page/edit/<%= @property.id %>" method='post'>
     <table>
      <tr>
         <td>Property Name:</td>
@@ -60,6 +60,12 @@
 </table>
   </form>
 </div>
+
+<form action="/user_page/delete" method="POST">
+      <input type="submit" name="property.id" value="Delete">
+    </form>
+  </td>
+</tr>
 
     <% Tag.all.each_with_index do |tag, i| %>
     <input name=<%="tags[" + tag.tag_text + "]"%> type="checkbox" > <%=tag.tag_text%>

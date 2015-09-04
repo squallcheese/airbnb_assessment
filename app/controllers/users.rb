@@ -29,15 +29,13 @@ post '/sign_in' do
   if User.authenticate(@email, @password)
     @user = User.find_by email: @email
     session[:user_id] = @user.id
-    erb :user_page
+    redirect to '/user_page'
   else
     redirect to '/'
   end
 end
 
-#Logging out
-post '/logout' do
-  session[:user_id] = nil
+get '/logout' do
+  session.clear
   redirect to '/'
 end
-
