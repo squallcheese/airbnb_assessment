@@ -37,7 +37,9 @@ What would you like to do?
           <td><%= property.price %></td>
           <td><%= property.rating %></td>
           <td><%= property.property_text %></td>
-          </td>
+          <td><% property.tags.each do |tag| %>
+              <%= tag.name %>&nbsp;
+          <% end %></td>
          </tr>
          <% end %>
     </table>

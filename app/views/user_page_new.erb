@@ -53,6 +53,13 @@
         </td>
     </tr>
     <tr>
+        <td>Tag(s):</td>
+        <td>
+        Tags separated by commas, ie. Tag1,Tag2<br>
+        <input name="tag_text" type="text">
+        </td>
+    </tr>
+    <tr>
     <td colspan="1">
     <input type="submit" value="Create" class="button">
     </td>
@@ -60,7 +67,3 @@
 </table>
   </form>
 </div>
-
-    <% Tag.all.each_with_index do |tag, i| %>
-    <input name=<%="tags[" + tag.tag_text + "]"%> type="checkbox" > <%=tag.tag_text%>
-    <% end %>

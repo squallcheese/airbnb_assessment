@@ -51,6 +51,11 @@
         <td>
         <textarea name="property_text" rows="5"><%= @property.property_text %></textarea>
         </td>
+    <tr>
+        <td>Tag(s):</td>
+        <td>
+        <input name="tag_text" type="text" value="<% @property.tags.each do |tag| %><%= tag.tag_text %>, <% end%>">
+        </td>
     </tr>
     <tr>
     <td colspan="1">
@@ -65,7 +70,3 @@
     <form action="/user_page/delete/<%= @property.id %>" method="post">
     <input type="submit" value="Delete">
     </form></div>
-
-    <% Tag.all.each_with_index do |tag, i| %>
-    <input name=<%="tags[" + tag.tag_text + "]"%> type="checkbox" > <%=tag.tag_text%>
-    <% end %>

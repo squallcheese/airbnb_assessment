@@ -36,6 +36,7 @@
         <th>Price</th>
         <th>Rating</th>
         <th>Additional Info</th>
+        <th>Tags</th>
       </tr>
       <% @property.each do |property| %>
         <tr>
@@ -47,6 +48,9 @@
           <td><%= property.price %></td>
           <td><%= property.rating %></td>
           <td><%= property.property_text %></td>
+          <td><% property.tags.each do |tag| %>
+              <%= tag.name %>&nbsp;
+          <% end %></td>
          </tr>
          <% end %>
     </table>
